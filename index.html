@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>artify. — 探索獨特設計師品牌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">artify<span>.</span></a>
+
+    <nav class="nav">
+      <a href="index.html" class="active">首頁</a>
+      <a href="products.html">設計師品牌</a>
+      <a href="products.html?cat=gift">禮物精選</a>
+      <a href="products.html?cat=sale">特賣活動</a>
+      <a href="products.html?cat=new">新品上架</a>
+    </nav>
+
+    <div class="search-wrap">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="搜尋設計師商品..." id="searchInput">
+    </div>
+
+    <div class="header-icons">
+      <button class="icon-btn" title="收藏清單" onclick="showToast('已加入收藏清單')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="icon-btn" title="購物車" onclick="window.location='products.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+      <div class="avatar" title="個人帳戶">A</div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu">
+  <div class="mobile-search">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" placeholder="搜尋商品...">
+  </div>
+  <a href="index.html" class="active">首頁</a>
+  <a href="products.html">設計師品牌</a>
+  <a href="products.html?cat=gift">禮物精選</a>
+  <a href="products.html?cat=sale">特賣活動</a>
+  <a href="products.html?cat=new">新品上架</a>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">限時特惠 · 最高 40% OFF</span>
+    <h1>探索獨一無二<br>的設計師創作</h1>
+    <p>匯聚全球優質設計師品牌，每件商品都承載著獨特的故事與溫度。</p>
+    <div class="hero-actions">
+      <a href="products.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        立即選購
+      </a>
+      <a href="products.html?cat=new" class="btn btn-outline">探索新品</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Categories ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">探索分類</h2>
+      <a href="products.html" class="section-link">查看全部 →</a>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card active" data-cat="home" onclick="filterCategory(this, '居家生活')">
+        <div class="cat-icon" style="background:#FFF0E6;">🏠</div>
+        <span>居家生活</span>
+      </div>
+      <div class="cat-card" data-cat="stationery" onclick="filterCategory(this, '文具雜貨')">
+        <div class="cat-icon" style="background:#E6F4FF;">✏️</div>
+        <span>文具雜貨</span>
+      </div>
+      <div class="cat-card" data-cat="fashion" onclick="filterCategory(this, '服飾配件')">
+        <div class="cat-icon" style="background:#F0E6FF;">👗</div>
+        <span>服飾配件</span>
+      </div>
+      <div class="cat-card" data-cat="beauty" onclick="filterCategory(this, '美妝保養')">
+        <div class="cat-icon" style="background:#FFE6F0;">💄</div>
+        <span>美妝保養</span>
+      </div>
+      <div class="cat-card" data-cat="jewelry" onclick="filterCategory(this, '珠寶飾品')">
+        <div class="cat-icon" style="background:#FFFDE6;">💍</div>
+        <span>珠寶飾品</span>
+      </div>
+      <div class="cat-card" data-cat="art" onclick="filterCategory(this, '藝術插畫')">
+        <div class="cat-icon" style="background:#E6FFE8;">🎨</div>
+        <span>藝術插畫</span>
+      </div>
+      <div class="cat-card" data-cat="food" onclick="filterCategory(this, '食品飲料')">
+        <div class="cat-icon" style="background:#FFF5E6;">🍵</div>
+        <span>食品飲料</span>
+      </div>
+      <div class="cat-card" data-cat="travel" onclick="filterCategory(this, '旅遊週邊')">
+        <div class="cat-icon" style="background:#E6FAFF;">✈️</div>
+        <span>旅遊週邊</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Featured Products ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">精選商品</h2>
+      <a href="products.html" class="section-link">查看全部 →</a>
+    </div>
+    <div class="products-grid" id="featuredProducts">
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="北歐風格陶瓷花瓶">
+          <button class="wish-btn" onclick="toggleWish(this)" title="加入收藏">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Maison Studio</div>
+          <div class="product-name">北歐風格簡約陶瓷花瓶</div>
+          <div class="product-price-row">
+            <span class="product-price">NT$1,280</span>
+            <span class="product-price-orig">NT$1,680</span>
+          </div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span>4.9 (128)</span>
+          </div>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart(this, '北歐風格簡約陶瓷花瓶')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          加入購物車
+        </button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80" alt="手工皮革筆記本">
+          <button class="wish-btn" onclick="toggleWish(this)" title="加入收藏">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <span class="product-badge">NEW</span>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Craft & Co.</div>
+          <div class="product-name">植鞣革手工縫製筆記本 A5</div>
+          <div class="product-price-row">
+            <span class="product-price">NT$890</span>
+          </div>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span>4.7 (86)</span>
+          </div>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart(this, '植鞣革手工縫製筆記本')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          加入購物車
+        </button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80" alt="香氛大豆蠟燭">
+          <button class="wish-btn active" onclick="toggleWish(this)" title="加入收藏">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6B6B" stroke="#FF6B6B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Bloom Atelier</div>
+          <div class="product-name">茉莉花香氛大豆蠟燭禮盒組</div>
+          <div class="product-price-row">
+            <span class="product-price">NT$680</span>
+            <span class="product-price-orig">NT$850</span>
+          </div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span>5.0 (212)</span>
+          </div>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart(this, '茉莉花香氛大豆蠟燭')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          加入購物車
+        </button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="純銀幾何耳環">
+          <button class="wish-btn" onclick="toggleWish(this)" title="加入收藏">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <span class="product-badge">SALE</span>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Silver & Soul</div>
+          <div class="product-name">手工純銀幾何不對稱耳環</div>
+          <div class="product-price-row">
+            <span class="product-price">NT$1,580</span>
+            <span class="product-price-orig">NT$2,100</span>
+          </div>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span>4.8 (54)</span>
+          </div>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart(this, '手工純銀幾何不對稱耳環')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          加入購物車
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Promo Banner ===== -->
+<section class="section">
+  <div class="container">
+    <div class="promo-banner">
+      <div class="promo-text">
+        <h2>週年慶限定優惠<br>最高 40% OFF</h2>
+        <p>精選超過 500+ 件設計師商品，限時搶購中</p>
+      </div>
+      <a href="products.html?cat=sale" class="btn btn-outline" style="position:relative;z-index:1;">
+        前往特賣活動
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">artify<span style="color:#fff">.</span></div>
+        <p>匯聚全球優質設計師品牌，讓每一件商品都承載獨特的創意與溫度。</p>
+        <div class="social-links">
+          <a href="#" class="social-btn">IG</a>
+          <a href="#" class="social-btn">FB</a>
+          <a href="#" class="social-btn">TW</a>
+          <a href="#" class="social-btn">YT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#">品牌故事</a></li>
+          <li><a href="#">設計師申請</a></li>
+          <li><a href="#">媒體報導</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>購物說明</h4>
+        <ul>
+          <li><a href="#">訂購流程</a></li>
+          <li><a href="#">配送說明</a></li>
+          <li><a href="#">退換貨政策</a></li>
+          <li><a href="#">常見問題</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服務支援</h4>
+        <ul>
+          <li><a href="#">會員中心</a></li>
+          <li><a href="#">訂單查詢</a></li>
+          <li><a href="#">客服中心</a></li>
+          <li><a href="#">隱私權政策</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 artify. All rights reserved.</span>
+      <span>使用條款 · 隱私政策 · Cookie 設定</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-bottom-nav">
+  <div class="bottom-nav-inner">
+    <a class="bottom-nav-item active" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      探索
+    </a>
+    <a class="bottom-nav-item" href="#" onclick="document.getElementById('searchInput').focus()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      搜尋
+    </a>
+    <a class="bottom-nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      收藏
+    </a>
+    <a class="bottom-nav-item" href="products.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      購物車
+    </a>
+    <a class="bottom-nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      我的
+    </a>
+  </div>
+</nav>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Back to Top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
